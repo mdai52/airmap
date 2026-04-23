@@ -55,8 +55,9 @@
       </a-col>
       <a-col :span="17">
         <a-input-group compact v-if="model.map.center">
-          <a-input v-model:value="model.map.center[0]" style="width: 50%" />
-          <a-input v-model:value="model.map.center[1]" style="width: 50%" />
+          <a-input v-model:value="model.map.center[0]" style="width: 40%" />
+          <a-input v-model:value="model.map.center[1]" style="width: 40%" />
+          <a-button @click="applyMapCenter" style="width: 20%; padding: 0;">应用</a-button>
         </a-input-group>
         <a-input-group compact v-else>
           <a-input disabled style="width: 50%" /><a-input disabled style="width: 50%" />
@@ -221,6 +222,12 @@ export default {
     },
     cityNameChange (e) {
       this.map.setCity(e.target.value)
+    },
+    applyMapCenter () {
+      this.model.map.center = [
+        this.model.map.center[0],
+        this.model.map.center[1]
+      ]
     },
     hasMaskChange (value) {
       if (!value) {
